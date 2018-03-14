@@ -4,5 +4,5 @@
 ?>
 
 <div id="banniere_photos_2_listes">
-	<img src="./images/Logo_CA.png" title="Superbe logo" /> 
+	<img src="./images/logo_ca" title="Superbe logo" /> 
 </div>
