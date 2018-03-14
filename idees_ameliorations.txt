@@ -1,0 +1,8 @@
+Design globale, of course
+Transformer le php (sauf pour les requêtes) en js
+Améliorer API des CE:
+    Ajout de l'item lorsque l'on ajoute un creneau/candidat_CA/liste
+    Permettre l'ajout d'une image pour l'ajout d'une liste
+    Rendre l'ajout d'item plus simple
+
+Permettre orga de donner un mdp lors pour les phases d'inscription aux soirées
