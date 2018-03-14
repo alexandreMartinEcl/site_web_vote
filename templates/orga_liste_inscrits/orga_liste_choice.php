@@ -3,7 +3,7 @@
 
 <!-- vérification du prénom, cursus, année -->
 
-<p>Laquelle de ces personnes le votant est-il/elle ? :</p>
+<p>Laquelle de ces personnes l'inscrit(e) est-il/elle ? :</p>
 <form action="index.php?view=orga_ajout_paiement" method="post">
 	<?php
 		foreach($people as $inscrit){
@@ -15,6 +15,7 @@
 		}
 	?>
 	<input type="radio" name="identification" value="non" id="non" checked="checked" /> <label for="non">  Aucune</label> 
+	<input type="hidden" name="mode" value="inscrit" />
 	<br/>
 	<br/>
 	<input type="submit" value="Valider" />
