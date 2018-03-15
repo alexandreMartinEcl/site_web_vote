@@ -208,7 +208,7 @@ function complete_form_bdx($listes, $choices){
 		for ($i = 1 ; $i <= $nb_choices ; $i++) {
 			// On ajoute le vote pour la liste
 	// majoritaire			$boo_checked = ($i == round($nb_choices / 2)); //checked pour la valeur 'moyenne'
-			$boo_checked = ($choices[$i] === "Blanc");
+			$boo_checked = ($choices[$i] === "Passable");
 			make_radio_balise($id, $i, $choices[$i], $boo_checked);
 		}
 	

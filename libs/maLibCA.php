@@ -158,7 +158,7 @@ function update_mdp($mdp, $id_votant){
 	SQLUpdate($SQL);
 }
 
-/*
+
 function build_values(){
 	$res = array();
 	$res[1] = 'a_rejeter';
@@ -169,8 +169,8 @@ function build_values(){
 	$res[6] = 'tres_bien';
 	return $res;
 }
-*/
 
+/*
 function build_values(){
 	$res = array();
 	$res[1] = 'nom_liste_1';
@@ -178,8 +178,8 @@ function build_values(){
 	$res[3] = 'blanc';
 	return $res;
 }
+*/
 
-/*
 function build_choices(){
 	$res = array();
 	$res[1] = 'A rejeter';
@@ -190,8 +190,8 @@ function build_choices(){
 	$res[6] = 'Tres bien';
 	return $res;
 }
-*/
 
+/*
 function build_choices(){
 	$res = array();
 	$res[1] = "Tsuna'lille";
@@ -199,7 +199,7 @@ function build_choices(){
 	$res[3] = "Blanc";
 	return $res;
 }
-
+*/
 
 function sql_add_vote($table, $id_list, $column, $to_add=1){
 	$SQL = "UPDATE " . $table;

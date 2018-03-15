@@ -24,7 +24,7 @@ if ($authen_ca) {
 	$best_id = define_winner($best_ids, $resultats);
 
 //debug
-	foreach($resultats as $i=>$res){
+/*	foreach($resultats as $i=>$res){
 		echo '</br>';
 		echo 'base:'.$i;
 		print_r($res);
@@ -33,7 +33,7 @@ if ($authen_ca) {
 	echo 'to_print_ids:';
 	print_r($best_ids);
 	echo $best_id;
-
+*/
 
 	
 	$victoire = $resultats[$best_id]->nom_liste;
