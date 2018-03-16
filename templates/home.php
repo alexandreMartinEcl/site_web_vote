@@ -10,7 +10,7 @@
 				case "ca":
 					include("templates/home/ca.php");
 					break;
-				case "event":
+				case "bdx":
 					if ($_SESSION['nb_listes'] <= 2) {
 						include("templates/home/two_lists.php");
 					} elseif ($_SESSION['nb_listes'] == 3) {
