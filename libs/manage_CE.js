@@ -225,9 +225,9 @@ function createFormSession(){
     }
 
     div.appendChild(createTextInput("Type de session [ca, event, bdx]", "add_session_type"));
-    div.appendChild(createDateInput("1901-01-01", "add_session_date"));
-    div.appendChild(createHeureInput("00:00:00", "add_session_debut"));
-    div.appendChild(createHeureInput("23:59:00", "add_session_fin"));
+    div.appendChild(createTextInput("1901-01-01", "add_session_date"));
+    div.appendChild(createTextInput("00:00:00", "add_session_debut"));
+    div.appendChild(createTextInput("23:59:00", "add_session_fin"));
     div.appendChild(bttn);
     
     return div;
