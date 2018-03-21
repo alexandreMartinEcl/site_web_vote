@@ -29,7 +29,7 @@ if (!$listes){
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="style.css" />
 		<title>Votes BDX</title>
-		<meta property="og:image:secure" content="https://elections-asso.centralelille.fr/images/Logo_CA.png" />
+		<meta property="og:image:secure" content="https://elections-asso.centralelille.fr/images/logo_ca" />
 		<meta property="og:image:width" content="200" />
 		<meta property="og:image:height" content="85" />
 		<meta property="og:title" content="Elections assos - CLA" />
