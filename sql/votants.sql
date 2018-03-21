@@ -10,6 +10,7 @@ CREATE TABLE `votants` (
   `college` varchar(50) NOT NULL DEFAULT 'centrale',
   `mail` text NOT NULL,
   `date_naissance` date NOT NULL DEFAULT '1901-01-01',
+  `nfc_code` varchar(20) DEFAULT '',
   `mot_de_passe` varchar(10) DEFAULT NULL,
   `a_vote` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

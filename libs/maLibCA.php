@@ -500,4 +500,10 @@ function sql_select_inscrits_csv($link){
 	return parcoursRs_csv(SQLSelect($SQL), $link);
 }
 
+function sql_select_inscrits(){
+	$SQL = "SELECT *";
+	$SQL .= " FROM inscrit";
+	return parcoursRs(SQLSelect($SQL));
+}
+
 ?>
