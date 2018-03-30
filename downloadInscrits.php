@@ -5,9 +5,12 @@ include_once("libs/config.php");
 
 GLOBAL $CONFIG_MDP_ORGA;
 
+$json = file_get_contents('php://input');
+$obj = json_decode($json, true);
+
 $authen_orga = valider('authentifie_orga', 'SESSION');
-$mdp_orga = valider('mdp', 'POST');
-$output_type = valider('type', 'POST');
+$mdp_orga = valider('mdp', 'POST') ? valider('mdp', 'POST') : $obj['mdp'];
+$output_type = valider('type', 'POST') ? valider('type', 'POST') : $obj['type'];
 
 if($authen_orga || ($mdp_orga && $mdp_orga === $CONFIG_MDP_ORGA)){
 	if ($output_type == 'json') {
