@@ -6,3 +6,5 @@ Améliorer API des CE:
     Rendre l'ajout d'item plus simple
 
 Permettre orga de donner un mdp lors pour les phases d'inscription aux soirées
+
+Check des securites pour l'inscription (empecher mineur exte, empecher mineur cotisant de prendre alcool, empecher plus de 350 places)

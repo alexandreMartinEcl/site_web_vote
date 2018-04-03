@@ -510,6 +510,12 @@ function sql_select_inscrits(){
 	return parcoursRs(SQLSelect($SQL));
 }
 
+function sql_select_all_inscrits(){
+	$SQL = "SELECT *";
+	$SQL .= " FROM inscrit";
+	return parcoursRs(SQLSelect($SQL));
+}
+
 function sql_select_inscrits_no_code(){
 	$SQL = "SELECT *";
 	$SQL .= " FROM inscrit";
