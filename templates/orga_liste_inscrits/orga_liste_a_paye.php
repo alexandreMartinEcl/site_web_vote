@@ -17,7 +17,7 @@
 	
 	if (!empty($exte)){
 		if($exte['a_paye'] == 1){
-			$a_rembourser = $a_rembourser + $TARIF_EXTE - ($exte['alcool'] === "sans" ? $SUPPLEMENT_ALCOOL : 0);
+			//$a_rembourser = $a_rembourser + $TARIF_EXTE - ($exte['alcool'] === "sans" ? $SUPPLEMENT_ALCOOL : 0);
 
 			echo "<p>Elle se porte également garant pour une personne extérieure à CLA: $exte[prenom] $exte[nom]. Sa place est déjà réglée, $exte[alcool] alcool.</p>";
 		} 
