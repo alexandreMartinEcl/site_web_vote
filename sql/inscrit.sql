@@ -16,13 +16,14 @@ CREATE TABLE `inscrit` (
   `sub_date` date NOT NULL,
   `sub_time` time NOT NULL,
   `nfc_code` varchar(20) DEFAULT '',
-  `a_paye` tinyint(1) NOT NULL DEFAULT '0'
+  `a_paye` tinyint(1) NOT NULL DEFAULT '0',
+  `present` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
 ALTER TABLE `inscrit`
   ADD PRIMARY KEY (`id`);
 
-INSERT INTO `inscrit` (`id_cotisant`, `nom`, `prenom`, `cursus`, `hebergement`, `mail`, `date_naissance`, `id_garant`, `alcool`, `sub_date`, `sub_time`) VALUES
+INSERT INTO `inscrit` (`id`, `id_cotisant`, `nom`, `prenom`, `cursus`, `hebergement`, `mail`, `date_naissance`, `id_garant`, `alcool`, `sub_date`, `sub_time`) VALUES
 ('0_0' , 0, 'un_nom', 'un_prenom', 'ING-G1', 'B211', 'un_prenom.un_nom@centrale.centralelille.fr', '1901-01-01', 0, 'avec', '2018-01-01', '12:00:00');
 

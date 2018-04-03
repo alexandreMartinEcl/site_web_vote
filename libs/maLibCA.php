@@ -30,7 +30,7 @@ function check_orga_mdp($mdp){
 }
 
 function get_votant_with_id($id){
-	$SQL = "SELECT id, prenom, nom, mail, cursus, college, date_naissance, a_vote";
+	$SQL = "SELECT id, prenom, nom, mail, cursus, college, date_naissance, a_vote, nfc_code";
 	$SQL .= " FROM votants"; 
 	$SQL .= " WHERE id = '$id'";
 	return parcoursRS(SQLSelect($SQL))[0];
@@ -62,6 +62,7 @@ function create_session_with_id($requested_id){
 	$_SESSION['college'] = $votant['college'];
 	$_SESSION['date_naissance'] = $votant['date_naissance'];
 	$_SESSION['a_vote'] = $votant['a_vote'];
+	$_SESSION['nfc_code'] = $votant['nfc_code'];
 }
 
 function reinit_session_if_need(){
@@ -82,6 +83,7 @@ function reinit_session_if_need(){
 		unset($_SESSION['authentifie_orga']);
 		unset($_SESSION['is_inscrit']);
 		unset($_SESSION['date_naissance']);
+		unset($_SESSION['nfc_code']);
 	}
 }
 
@@ -246,17 +248,17 @@ function sql_insert_inscrit_value($inscrit){
 					'$inscrit[hebergement]', '$inscrit[mail]',
 					'$inscrit[date_naissance]', '$inscrit[id_garant]',
 					'$inscrit[alcool]',
-					'$inscrit[sub_date]', '$inscrit[sub_time]')";
+					'$inscrit[sub_date]', '$inscrit[sub_time]', '$inscrit[nfc_code]')";
 }
 
 function make_inscription($inscrits){
-	$SQL = "INSERT INTO inscrit(`id`, `id_cotisant`, `nom`, `prenom`, `cursus`, `hebergement`, `mail`, `date_naissance`, `id_garant`, `alcool`, `sub_date`, `sub_time`)";
+	$SQL = "INSERT INTO inscrit(`id`, `id_cotisant`, `nom`, `prenom`, `cursus`, `hebergement`, `mail`, `date_naissance`, `id_garant`, `alcool`, `sub_date`, `sub_time`, `nfc_code`)";
 	$SQL .= " VALUES";
 	foreach(array_values($inscrits) as $inscrit) {
 		$SQLtemp = $SQL . sql_insert_inscrit_value($inscrit);
 		$SQLtemp .= "ON DUPLICATE KEY UPDATE `nom`=VALUES(`nom`), `prenom`=VALUES(`prenom`),";
 		$SQLtemp .= " `cursus`=VALUES(`cursus`), `hebergement`=VALUES(`hebergement`),";
-		$SQLtemp .= " `date_naissance`=VALUES(`date_naissance`), `alcool`=VALUES(`alcool`), `sub_date`=VALUES(`sub_date`), `sub_time`=VALUES(`sub_time`);";
+		$SQLtemp .= " `date_naissance`=VALUES(`date_naissance`), `alcool`=VALUES(`alcool`), `sub_date`=VALUES(`sub_date`), `sub_time`=VALUES(`sub_time`), `nfc_code`=VALUES(`nfc_code`);";
 
 		SQLInsert($SQLtemp);
 		//		$SQL .= ",";
@@ -497,13 +499,41 @@ function sql_select_votants_csv($link){
 function sql_select_inscrits_csv($link){
 	$SQL = "SELECT *";
 	$SQL .= " FROM inscrit";
+	$SQL .= " WHERE a_paye='1'";
 	return parcoursRs_csv(SQLSelect($SQL), $link);
 }
 
 function sql_select_inscrits(){
 	$SQL = "SELECT *";
 	$SQL .= " FROM inscrit";
+	$SQL .= " WHERE a_paye='1'";
 	return parcoursRs(SQLSelect($SQL));
+}
+
+function sql_select_inscrits_no_code(){
+	$SQL = "SELECT *";
+	$SQL .= " FROM inscrit";
+	$SQL .= " WHERE nfc_code='' AND a_paye=1";
+	return parcoursRs(SQLSelect($SQL));
+}
+
+function sql_update_presents($arr_ids) {
+	$SQL = "UPDATE inscrit";
+	$SQL .= " SET present = '1'";
+	$SQL .= " WHERE id IN ('" . join("', '", $arr_ids) . "');";
+	SQLUpdate($SQL);
+}
+
+function sql_update_nfc($code, $id_votant) {
+	$SQL = "UPDATE inscrit";
+	$SQL .= " SET nfc_code = '$code'";
+	$SQL .= " WHERE id_cotisant = '$id_votant' OR id_garant = '$id_votant'";
+	SQLUpdate($SQL);
+
+	$SQL = "UPDATE votants";
+	$SQL .= " SET nfc_code = '$code'";
+	$SQL .= " WHERE id = '$id_votant'";
+	SQLUpdate($SQL);
 }
 
 ?>

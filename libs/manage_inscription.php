@@ -48,7 +48,7 @@ function check_inscr_value($posted, $key){
 	return false;
 }
 
-function build_inscrit($id, $nom, $prenom, $cursus, $place, $mail, $bdate, $id_garant, $alcool){
+function build_inscrit($id, $nom, $prenom, $cursus, $place, $mail, $bdate, $id_garant, $alcool, $nfc_code){
 	$now = get_date();
 	$res = array();
 	
@@ -65,6 +65,7 @@ function build_inscrit($id, $nom, $prenom, $cursus, $place, $mail, $bdate, $id_g
 	$res["alcool"] = $alcool === "avec" ? "avec" : "sans";
 	$res["sub_date"] = $now["date"];
 	$res["sub_time"] = $now["time"];
+	$res["nfc_code"] = $nfc_code;
 	
 	return $res;
 }
@@ -83,7 +84,7 @@ function build_inscription($posted){
 	}
 
 	array_push($res, build_inscrit($_SESSION["id"], $_SESSION["nom"], $_SESSION["prenom"],
-							$_SESSION["cursus"], $posted["cotis_place"], $_SESSION["mail"], $_SESSION["date_naissance"], 0, $posted["cotis_alcool"]));
+							$_SESSION["cursus"], $posted["cotis_place"], $_SESSION["mail"], $_SESSION["date_naissance"], 0, $posted["cotis_alcool"], $_SESSION["nfc_code"]));
 	
 	if($posted["add_exte"] === "true"){
 		if(!check_inscr_value($posted, "exte_nom") || !check_inscr_value($posted, "exte_prenom")
@@ -101,7 +102,7 @@ function build_inscription($posted){
 		}
 */
 		array_push($res, build_inscrit(0, $posted["exte_nom"], $posted["exte_prenom"],
-								"EXTE", $posted["exte_place"], $_SESSION["mail"], $posted["exte_date_naissance"], $_SESSION["id"], $posted["exte_alcool"]));
+								"EXTE", $posted["exte_place"], $_SESSION["mail"], $posted["exte_date_naissance"], $_SESSION["id"], $posted["exte_alcool"], $_SESSION["nfc_code"]));
 	}
 
 	return $res;

@@ -22,6 +22,6 @@ ALTER TABLE `votants`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 
-INSERT INTO `votants` (`nom`, `prenom`, `cursus`, `mail`, `date_naissance`, `mot_de_passe`, `a_vote`) VALUES
-( 'un_nom', 'un_prenom', 'ING-G1', 'un_prenom.un_nom@centrale.centralelille.fr', '1901-01-13', NULL, 0);
+INSERT INTO `votants` (`nom`, `prenom`, `cursus`, `mail`, `date_naissance`) VALUES
+( 'un_nom', 'un_prenom', 'ING-G1', 'un_prenom.un_nom@centrale.centralelille.fr', '1901-01-13');
 
