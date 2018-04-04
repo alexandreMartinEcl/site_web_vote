@@ -523,6 +523,14 @@ function sql_select_inscrits_no_code(){
 	return parcoursRs(SQLSelect($SQL));
 }
 
+function sql_select_cotisant_for_app($name) {
+	$name = $name.'%';
+	$SQL = "SELECT id, nom, prenom, cursus, college";
+	$SQL .= " FROM votants"; 
+	$SQL .= " WHERE nom LIKE '$name'"; 
+	return parcoursRS(SQLSelect($SQL));
+}
+
 function sql_update_presents($arr_ids) {
 	$SQL = "UPDATE inscrit";
 	$SQL .= " SET present = '1'";

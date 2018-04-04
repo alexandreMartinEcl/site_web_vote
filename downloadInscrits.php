@@ -15,6 +15,7 @@ $no_code = valider('no_code', 'POST') ? valider('no_code', 'POST') : $obj['no_co
 $nfc_code = valider('nfc_code', 'POST') ? valider('nfc_code', 'POST') : $obj['nfc_code'];
 $id_member = valider('id_member', 'POST') ? valider('id_member', 'POST') : $obj['id_member'];
 $presents = valider('presents', 'POST') ? valider('presents', 'POST') : $obj['presents'];
+$specificName = valider('specificName', 'POST') ? valider('specificName', 'POST') : $obj['specificName'];
 
 if($authen_orga || ($mdp_orga && $mdp_orga === $CONFIG_MDP_ORGA)){
 	if ($output_type == 'json') {
@@ -22,6 +23,12 @@ if($authen_orga || ($mdp_orga && $mdp_orga === $CONFIG_MDP_ORGA)){
 			$data = array();
 			$data["success"] = true;
 			$data["result"] = sql_select_inscrits_no_code();
+
+			echo json_encode($data);
+		} elseif ($specificName) {
+			$data = array();
+			$data["success"] = true;
+			$data["result"] = sql_select_cotisant_for_app($specificName);
 
 			echo json_encode($data);
 		} elseif ($nfc_code) {
